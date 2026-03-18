@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Random Name Spinner</title>
+  <title>Wheel of Names</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <header>
     <h1>Random Name Spinner</h1>
-    <p class="subtitle">Paste names, load from <code>names.json</code>, and spin the wheel. Winner is chosen randomly after a 10s spin.</p>
   </header>
 
   <main class="layout">
@@ -21,12 +22,11 @@
         <label for="names-input" class="sr-only">Names (one per line)</label>
         <textarea id="names-input" rows="12" placeholder="One name per line"></textarea>
         <div class="controls">
-          <button id="load-json" type="button">Load from names.json</button>
-          <button id="apply-names" type="button">Use text</button>
-          <button id="save-local" type="button">Save to browser</button>
-          <button id="export-json" type="button">Export names.json</button>
+          <!- <button id="load-json" type="button">Load from names.json</button> -->
+            <button id="apply-names" type="button">Use text</button>
+            <button id="save-local" type="button">Save to browser</button>
+            <!--  <button id="export-json" type="button">Export names.json</button> -->
         </div>
-        <p class="hint">Tip: Update the list above and click <strong>Use text</strong>. To make changes permanent in your repo, click <strong>Export names.json</strong> and commit the file.</p>
       </div>
     </section>
 
@@ -47,9 +47,10 @@
   </main>
 
   <footer>
-    <p>Made for GitHub Pages. No backend required.</p>
+    <p>Vibe coded by Simon. No backend required.</p>
   </footer>
 
   <script src="app.js"></script>
 </body>
+
 </html>
