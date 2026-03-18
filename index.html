@@ -1,23 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spinning Name Wheel</title>
+    <title>Wheel of names</title>
     <style>
-        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; background: #f0f2f5; margin: 0; padding: 20px; }
-        .container { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; max-width: 1000px; }
-        .input-section { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 300px; }
-        textarea { width: 100%; height: 200px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px; padding: 8px; box-sizing: border-box; resize: vertical; }
-        button { width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
-        button:hover { background: #0056b3; }
-        
-        .wheel-section { position: relative; }
-        canvas { border-radius: 50%; box-shadow: 0 0 20px rgba(0,0,0,0.2); background: white; }
-        #pointer { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 30px solid #ff4757; z-index: 10; }
-        #winner-display { margin-top: 20px; font-size: 1.5rem; font-weight: bold; color: #2f3542; height: 1.5em; }
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            max-width: 1000px;
+        }
+
+        .input-section {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 8px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .wheel-section {
+            position: relative;
+        }
+
+        canvas {
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            background: white;
+        }
+
+        #pointer {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 30px solid #ff4757;
+            z-index: 10;
+        }
+
+        #winner-display {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2f3542;
+            height: 1.5em;
+        }
     </style>
 </head>
+
 <body>
 
     <h1>The Decision Wheel</h1>
@@ -26,8 +99,15 @@
         <div class="input-section">
             <h3>Update Names</h3>
             <p><small>One name per line:</small></p>
-            <textarea id="nameList">Alice\nBob\nCharlie\nDiana\nEdward</textarea>
-            <button onclick="spin()">SPIN THE WHEEL</button>
+            <textarea id="nameList">
+                Simon
+                Abbie
+                Mo
+                Tom
+                Ben
+                Paul
+            </textarea>
+            <button onclick="spin()">SPIN THE WHEEL OF NAMES</button>
         </div>
 
         <div class="wheel-section">
@@ -59,7 +139,7 @@
 
             names.forEach((name, i) => {
                 const angle = i * sectorAngle + currentRotation;
-                
+
                 // Draw slice
                 ctx.beginPath();
                 ctx.fillStyle = `hsl(${(i * 360) / names.length}, 70%, 60%)`;
@@ -87,7 +167,7 @@
 
             isSpinning = true;
             winnerDisplay.innerText = "Spinning...";
-            
+
             const spinDuration = 10000; // 10 seconds
             const startTime = performance.now();
             const startRotation = currentRotation;
@@ -96,10 +176,10 @@
             function animate(currentTime) {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / spinDuration, 1);
-                
+
                 // Ease-out cubic formula for smooth slowing down
                 const easing = 1 - Math.pow(1 - progress, 3);
-                
+
                 currentRotation = startRotation + (extraSpins * easing);
                 drawWheel();
 
@@ -116,12 +196,12 @@
         function determineWinner() {
             const names = getNames();
             const sectorAngle = (2 * Math.PI) / names.length;
-            
+
             // Pointer is at the top (-90 degrees or -pi/2)
             // We calculate which slice is currently under the pointer
             const normalizedRotation = (currentRotation + Math.PI / 2) % (2 * Math.PI);
             const index = names.length - 1 - Math.floor(normalizedRotation / sectorAngle) % names.length;
-            
+
             winnerDisplay.innerText = "Result: " + names[index];
         }
 
@@ -130,4 +210,5 @@
         drawWheel();
     </script>
 </body>
+
 </html>
