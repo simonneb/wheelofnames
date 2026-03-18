@@ -1,0 +1,50 @@
+
+:root {
+  --bg: #0b1020;
+  --panel: #141a32;
+  --text: #e8ecf2;
+  --muted: #a7b0c3;
+  --primary: #5b9dff;
+  --accent: #ffc857;
+  --danger: #ff6b6b;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text); background: radial-gradient(1200px 800px at 20% 0%, #101737, var(--bg));
+}
+header { padding: 1.25rem 1rem 0.5rem; }
+header h1 { margin: 0 0 0.25rem; font-weight: 700; letter-spacing: 0.3px; }
+.subtitle { margin: 0; color: var(--muted); }
+
+.layout { display: grid; gap: 1rem; grid-template-columns: 1fr; padding: 0 1rem 2rem; max-width: 1100px; margin: 0 auto; }
+@media (min-width: 900px) { .layout { grid-template-columns: 1fr 1fr; } }
+
+.panel { background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.0)); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+.panel-header { padding: 0.9rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.panel-body { padding: 1rem; }
+
+textarea {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; background: rgba(0,0,0,0.25);
+  color: var(--text); padding: 0.75rem; resize: vertical; outline: none;
+}
+textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(91,157,255,0.25); }
+
+.controls { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+button { cursor: pointer; border: 1px solid rgba(255,255,255,0.12); background: #1a2245; color: var(--text); padding: 0.6rem 0.9rem; border-radius: 10px; }
+button:hover { background: #1e2a5c; }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.hint { color: var(--muted); font-size: 0.95rem; margin-top: 0.5rem; }
+
+.wheel-area { display: grid; place-items: center; gap: 0.75rem; }
+#wheel { max-width: 100%; height: auto; background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); }
+
+.spin-controls { display: flex; align-items: center; gap: 0.6rem; }
+#winner { font-size: 1.4rem; font-weight: 700; color: var(--accent); min-height: 2rem; text-align: center; }
+
+footer { padding: 0.75rem 1rem 2rem; color: var(--muted); text-align: center; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 1px, 1px); border: 0; }
