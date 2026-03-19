@@ -1,5 +1,5 @@
 
-# Random Name Spinner (GitHub Pages ready)
+# Wheel of names
 
 A tiny, no-dependencies web app that lets you paste a list of names and spin a colorful wheel to pick one at random. Designed to run entirely on GitHub Pages—no backend, no build step.
 
